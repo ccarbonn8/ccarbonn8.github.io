@@ -1,0 +1,315 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 2px;
+  background: #ffffff;
+}
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #eee;
+  padding: 2px 2px;
+  border-bottom: 5px solid #ffffff;
+  height: 40px;
+}
+.hamburger-menu {
+  position: relative;
+  left: 10px;
+  z-index: 1000;
+}
+
+.hamburger-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.menu-items {
+  display: none;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid black;
+  position: absolute;
+  top: 40px;
+  left: 0;
+}
+
+.menu-items div {
+  padding: 20px;
+  cursor: pointer;
+  border-top: 1px solid black;
+  width: 150px
+}
+
+.menu-items div:first-child {
+  border-top: none;
+}
+
+.archer-info-display {
+  flex-grow: 1;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.next-archer-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0px 0px;
+}
+
+
+/* Container to center everything and fix width for mobile */
+#container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 1px;
+}
+.controls {
+  text-align: center;
+  margin-bottom: 20px;
+}
+button {
+  margin: 2px;
+  padding: 0px 0px;
+  font-size: 24px;
+  border-radius: 0px;
+  cursor: pointer;
+}
+#archersContainer {
+  margin-bottom: 10px;
+}
+.archer-info {
+  display: none;
+}
+.archer-header {
+  display: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+.archer-scores table {
+  width: 100%;
+  table-layout: fixed;
+}
+.archer-scores table td {
+  text-align: center;
+}
+
+/* Header cells */
+th {
+  height: 30px;
+  border: 1px solid #ccc;
+  background: #ffffff;
+  font-size: 14px;
+  text-align: center;
+  vertical-align: middle;
+}
+/* Regular table cells */
+td {
+  border: 1px solid #ccc;
+  height: 30px;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+  vertical-align: middle;
+}	
+/* Score inputs (arrows) */
+.score-input {
+  width: 100%;
+  height: 100%;
+  border: 4px solid transparent;  
+  font-size: 18px;
+  text-align: center;
+  padding: 0;
+  background: none;
+  outline: none;
+  box-sizing: border-box;
+}
+.score-input:focus {
+  outline: none;
+  border: 4px solid #00ff00; /* solid blue border when focused */
+}
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 5px;
+  margin-top: 10px;
+}
+.key {
+  display: inline-block;
+  cursor: pointer;
+  height: 60px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 60px;
+  font-size: 24px;
+  border: 1px solid black;
+  border-radius: 8px;
+  user-select: none;
+}
+#deleteBar {
+  margin-top: 10px;
+  padding: 5px 15px;
+  background-color: transparent;
+  color: #666666;
+  font-weight: normal;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 8px;
+  user-select: none;
+  cursor: pointer;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #cccccc;
+  transition: background-color 0.2s, color 0.2s;
+}
+#deleteBar:hover {
+  background-color: #eeeeee;
+  color: #333333;
+}
+
+
+.delete-button:hover {
+  background-color: #ff4d4d;
+}
+
+.active-input {
+  border: 2px solid #00FF00;
+}
+/* General spacer style for both headers and cells */
+.spacer-cell {
+  border: none;
+  background: transparent;
+  min-width: 12px;
+}
+.boxed {
+  border: 1px solid black;
+  padding: 2px 6px;
+  display: inline-block;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+.diagonal-cell {
+  position: relative;
+}
+.diagonal-cell::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to top right,
+    transparent 49%,
+    #ccc 49%,
+    #ccc 51%,
+    transparent 51%
+  );
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 10px;
+  border: 1px solid #888;
+  width: 95%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+#archersEditTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 5px;
+  table-layout: fixed;  
+}
+
+#archersEditTable th, #archersEditTable td {
+  border: 1px solid #ccc;
+  padding: 4px;
+  text-align: center;
+}
+
+#archersEditTable th:nth-child(1),
+#archersEditTable td:nth-child(1) {
+  width: 6%; /* # column very narrow */
+}
+
+#archersEditTable th:nth-child(2),
+#archersEditTable td:nth-child(2) {
+  text-align: left;
+  padding-left: 8px;
+}
+
+#archersEditTable td:nth-child(2) input {
+  text-align: left;
+}
+
+#archersEditTable th:nth-child(3),
+#archersEditTable td:nth-child(3) {
+  width: 20%; /* # adhérent ID */
+}
+
+#archersEditTable th:nth-child(4),
+#archersEditTable td:nth-child(4) {
+  width: 10%; /* Ballot */
+}
+
+#archersEditTable th:nth-child(5),
+#archersEditTable td:nth-child(5) {
+  width: 8%; /* Position */
+}
+
+#archersEditTable input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  text-align: center;
+  box-sizing: border-box;
+  background-color: transparent;
+}
+
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.modal-buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+
+.modal-buttons button:last-child {
+  background-color: #f44336; /* Red for Annuler */
+}

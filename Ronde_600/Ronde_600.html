@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feuille de pointage Tir à l'Arc</title>
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="favicon.ico" />
+
+</head>
+
+<body>
+<div id="container">
+	<div class="top-bar">
+	  <div class="hamburger-menu">
+		<div class="hamburger-icon" onclick="toggleMenu()">☰</div>
+		<div class="menu-items" id="menuItems">
+		  <div onclick="openArchers()">Archers</div>
+		  <div onclick="exportToGoogleSheet()">Envoyer au CTAM</div>
+		  <div onclick="resetAll()">Effacer les résultats</div>
+		  <div>version 0.2</div>
+		</div>
+	  </div>
+	  <div class="archer-info-display" onclick="openArchersEditModal()" id="archerInfoDisplay">
+		Assigner un Archer
+	  </div>
+	<div id="offlineBanner" style="display:none; background-color: red; color: white; text-align: center; padding: 10px; font-weight: bold;">
+	  Hors ligne
+	</div>		  
+	  <div class="next-archer">
+		<button onclick="nextArcher()" class="next-archer-button">
+		  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="50" height="50" fill="black">
+			<path d="M10 17l5-5-5-5v10z"/>
+		  </svg>
+		</button>
+	  </div>
+	</div>
+
+	<div id="archersContainer"></div>
+
+	<div class="archer-summary" style="margin-top: 5px;">
+	<table style="width: 100%; padding: 0px; border: none; border-collapse: collapse; font-size: 18px">
+	  <tr>
+		<td style="text-align: left" class="spacer-cell">#10<span class="boxed"><div id="count10">0</div></span>&nbsp&nbsp#9<span class="boxed"><div id="count9">0</div></span></td>
+		<td style="text-align: right; font-size: 22px;" class="spacer-cell">Total<span style="font-weight: bold;"class="boxed"><div id="total60">0</div></span></td>
+	  </tr>
+	</table>
+	</div>
+
+	<div class="keyboard" id="keyboard"></div>
+	<div id="deleteBar">
+	  🗑️
+	</div>
+	
+	<script src="Ronde_600.js"></script>
+
+</div>
+
+<div id="archersEditModal" class="modal">
+  <div class="modal-content">
+    <h2>Modifier les archers</h2>
+
+    <table id="archersEditTable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Archer</th>
+          <th>#Adhérent</th>
+          <th>Ballot</th>
+          <th>Pos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- We will generate rows dynamically -->
+      </tbody>
+    </table>
+
+    <div class="modal-buttons">
+      <button onclick="saveAllArchersInfo()">OK</button>
+      <button onclick="closeArchersEditModal()">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<div id="exportModal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
+  <div style="background: white; margin: 20% auto; padding: 20px; border-radius: 8px; width: 80%; max-width: 400px; text-align: center; font-size: 18px;">
+    <div id="exportModalMessage"></div>
+    <br>
+    <button onclick="closeExportModal()" style="padding: 10px 20px; font-size: 16px;">OK</button>
+  </div>
+</div>
+
+<div id="confirmDeleteModal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
+  <div style="background: white; margin: 20% auto; padding: 20px; border-radius: 8px; width: 80%; max-width: 400px; text-align: center; font-size: 18px;">
+    <div id="confirmDeleteMessage">Voulez-vous vraiment tout effacer ?</div>
+    <br>
+    <button onclick="firstDeleteConfirm()" style="padding: 10px 20px; margin-right: 10px;">Oui</button>
+    <button onclick="closeConfirmDeleteModal()" style="padding: 10px 20px;">Non</button>
+  </div>
+</div>
+
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(function(registration) {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, function(error) {
+          console.log('ServiceWorker registration failed: ', error);
+        });
+    });
+  }
+</script>
+
+</body>
+</html>

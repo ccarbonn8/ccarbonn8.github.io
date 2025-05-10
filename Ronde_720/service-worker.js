@@ -1,8 +1,9 @@
-const CACHE_NAME = 'archery-app-cache-v2';
+const CACHE_NAME = 'archery-app-cache-720';
+
 const urlsToCache = [
   '/',
-  '/index.html',
-  '/app.js',
+  '/Ronde_720.html',
+  '/Ronde_720.js',
   '/style.css',
   // Add any other images or fonts you use
 ];
@@ -10,13 +11,8 @@ const urlsToCache = [
 self.addEventListener('install', event => {
   self.skipWaiting(); // Immediately activate new worker
   event.waitUntil(
-    caches.open('archery-app-cache-v1')
-      .then(cache => cache.addAll([
-        '/',
-        '/index.html',
-        '/app.js',
-        '/style.css'
-      ]))
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(urlsToCache))
   );
 });
 
@@ -25,7 +21,7 @@ self.addEventListener('activate', event => {
     caches.keys().then(cacheNames => {
       return Promise.all(
         cacheNames.map(cacheName => {
-          if (cacheName !== 'archery-app-cache-v1') {
+          if (cacheName !== CACHE_NAME) {
             return caches.delete(cacheName);
           }
         })

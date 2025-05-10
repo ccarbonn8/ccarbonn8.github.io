@@ -1,7 +1,7 @@
 {
-  "name": "Carte de Points",
-  "short_name": "Archery",
-  "start_url": "/index.html",
+  "name": "Ronde_720",
+  "short_name": "Ronde_720",
+  "start_url": "/ronde_720.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",

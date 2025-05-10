@@ -1,0 +1,8 @@
+{
+  "name": "Ronde_600",
+  "short_name": "Ronde_600",
+  "start_url": "/Ronde_600.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+}
