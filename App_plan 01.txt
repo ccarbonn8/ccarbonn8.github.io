@@ -1,0 +1,82 @@
+App Name: GES_TA (Compétition de tir à l'arc)
+----------------------------------------------
+Description: 
+- This app is used by club managers to create competitions with rounds and assign archers on targets
+- It contains a master list of all the archers of the province that adhere to the federation for competing. 
+  This list is managed by the webmaster and inaccessible to others.
+- User are club managers organizing competitions (need user/password acces)
+Database: COMP_TA_DB (Firestore)
+Use:
+- After login, user can:
+  - Create list of competitions for the club
+  - Create rounds for each competition
+  - Specify the registered archers for each round: ID, name, category, target_dimension (indoor)
+    - This can be done manually or by importing a CSV file
+    - The app validates that the registered archers are part of the master list.
+	- It also validate that they are registered in a valide age category.
+  - App can auto-assign target and position for each archer based on different criteria if indoor or outdoor.
+  - User can change target and position assignments manually after auto-assign.
+  - App can export target assignement to CSV
+- Rounds can be:
+  - 20 ends of 3 arrows for indoor competitions
+  - 12 ends of 6 arrows for outdoor competitions
+  - up to 5 ends of 3 arrows + 1 arrow for shoot-off for elimination round
+- User can lock a round to prevent access from archers.
+- User has access to round results and statistics after all archers have submitted their results.
+- User can print round scores and statistics to PDF.
+- The app can generate a QR code to link up directly to the round.
+
+AppName : RES_TA (Résultats de tir à l'arc)
+----------------------------------------------
+Description: 
+- This app is used to enter arrow points during a round at a given target.
+- We expect one archer per target will use the app while the others write results on paper cards.
+Database: localstorage during the competition, and COMP_TA_DB (Firestore) to load and save final results.
+Use:
+- Archers are expected to scan a QR code with their phone to launch the app on the correct round. 
+  - This should take them directly to the round planned by the organizers.
+  - They should then specify the target number and archer info should appear. 
+  - They can modify this info by selecting from list of registered archers in the round (from COMP_TA_DB).
+- The app will watch for duplicate entry on the same archer as there is only one line per archer per end.
+- Archers can use the app without the QR code but then the results are only saved locally.
+  - They have to select the type of round and the archers.
+  - A warning message will tell them they are only local to their device.
+  
+  
+  
+  
+  cd my-react-app
+  npm install
+  npm run dev
+  
+  Setup
+  =============================
+  nodejs : 
+    npm : Node Package Manager to install tools like react  
+  React : the app builder (web interface)
+  Vite  : App Starter and Server for local debugging
+    npm run : runs the scripts in package.json
+    npm run dev : see app locally
+	npm run build : prepare dist folder to send to Google Firebase
+	firebase deploy
+  Firebase : Google hosting
+  Firestore: Google hosted data storage / database
+
+
+Project Console: https://console.firebase.google.com/project/gesta-915bf/overview
+Hosting URL: https://gesta-915bf.web.app
+
+
+Users
+===============================
+Admin:
+charles.carbonneau@gmail.com       Password: vlmdppdta4389
+
+Federation Manager:
+gcosovan@tiralarcquebec.com        Password: FedManager#6289
+
+Club Managers:
+virg_chenier@hotmail.com           Password: VirgC_8492
+bisson.tommy@gmail.com             Password: Tommy#7114
+houlesophie@sympatico.ca           Password: Sophie_9325
+pierredelune7@hotmail.ca           Password: Lune!3847

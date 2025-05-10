@@ -1,0 +1,8 @@
+{
+  "name": "Carte de Points",
+  "short_name": "Archery",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+}
