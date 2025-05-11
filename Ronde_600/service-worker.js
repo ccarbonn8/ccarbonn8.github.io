@@ -2,9 +2,9 @@ const CACHE_NAME = 'ronde-600-cache-v1';
 
 const urlsToCache = [
   '/',
-  '/Ronde_600.html',
-  '/Ronde_600.js',
-  '/style.css',
+  'Ronde_600.html',
+  'Ronde_600.js',
+  'style.css',
   // Add any other images or fonts you use
 ];
 
