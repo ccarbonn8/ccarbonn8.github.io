@@ -246,10 +246,12 @@ function updateArcherInfoDisplay() {
 
   const display = document.getElementById('archerInfoDisplay');
   if (name.trim() !== '') {
-    display.innerText = `${target || "-"}${position || "-"} ${name || "-"} `;
+    display.innerText = `${currentArcher}: ${name || "-"} (${target || "-"}${position || "-"})`;
   } else {
-	display.innerText = "Assigner un Archer";
+	display.innerText = currentArcher + ": Assigner un Archer";
   }
+  
+  
 }
 
 function moveNextInput() {
