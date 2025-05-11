@@ -3,7 +3,7 @@ const CACHE_NAME = 'ronde-720-cache-v1';
 const urlsToCache = [
   'Ronde_720.html',
   'Ronde_720.js',
-  'style.css'
+  'style.css',
 ];
 
 self.addEventListener('install', event => {

@@ -1,6 +1,7 @@
 let currentArcher = 1;
 let currentEditingArcher = null;
 const GOOGLE_FORM_RESPONSE = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSfNXgfMh5vKJqouCkdZONily9TA4yAhvu2HXFalh_TrJMiK3g/formResponse';
+const STORAGE_KEY = 'Ronde_720_Data'
 
 const colors = {
   "X": { background: "#FFD700", text: "#000000" },
@@ -182,11 +183,11 @@ function saveAllArchers() {
     const scores = Array.from(document.querySelectorAll(`#archerInfo${i} .score-input`)).map(input => input.value);
     archers[i] = { name, uniqueID, target, position, scores };
   }
-  localStorage.setItem('archersData', JSON.stringify(archers));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(archers));
 }
 
 function loadAllArchers() {
-  const data = JSON.parse(localStorage.getItem('archersData'));
+  const data = JSON.parse(localStorage.getItem(STORAGE_KEY));
   if (!data) return;
   for (let i = 1; i <= 4; i++) {
     const archer = data[i];
@@ -209,7 +210,7 @@ function loadAllArchers() {
 }
 
 function resetScores() {
-  localStorage.removeItem('archersData');
+  localStorage.removeItem(STORAGE_KEY);
   location.reload();
 }
 
