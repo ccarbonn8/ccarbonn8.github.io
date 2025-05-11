@@ -291,7 +291,6 @@ function updateSumsAndCumul() {
 	  let sumLeft = val1 + val2 + val3 + val4 + val5 + val6;
 
 	  const anyInputLeft = el1?.value || el2?.value || el3?.value || el4?.value || el5?.value || el6?.value;
-		console.log('Checking line', line, el1?.value, el2?.value, sumLeft);
 
 	  const sumLeftCell = currentArcher.querySelector('#sum_left_' + line);
 	  const cumulLeftCell = currentArcher.querySelector('#cumul_left_' + line);
