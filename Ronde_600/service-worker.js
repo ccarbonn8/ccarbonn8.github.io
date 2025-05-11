@@ -1,4 +1,4 @@
-const CACHE_NAME = 'archery-app-cache-600';
+const CACHE_NAME = 'ronde-600-cache-v1';
 
 const urlsToCache = [
   '/',
